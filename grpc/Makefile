@@ -22,3 +22,4 @@ generate-chatServer-api:
 	--go-grpc_out=pkg/chatServerV1 --go-grpc_opt=paths=source_relative \
 	--plugin=protoc-gen-go-grpc=bin/protoc-gen-go-grpc \
 	api/chatServerV1/chatServerV1.proto
+
