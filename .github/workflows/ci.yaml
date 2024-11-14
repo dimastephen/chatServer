@@ -47,7 +47,7 @@ jobs:
           envs: IMAGE_NAME,REGISTRY,GITHUB_SHA,CONTAINER_NAME
           script: |
             # Set up variables
-            TAG_NAME= $(echo $GITHUB_SHA | head -c7)
+            TAG_NAME=$(echo $GITHUB_SHA | head -c7)
             
             #Log In Selectel Registry
             docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }} $REGISTRY
@@ -59,4 +59,4 @@ jobs:
             docker rm $CONTAINER_NAME
             
             #Run new container
-            docker run -d -p 50052:50052 --name $CONTAINER_NAME $REGISTRY/$IMAGE_NAME:$TAG_NAME
+            docker run -d -p 50052:50052 --name $CONTAINER_NAME -t $REGISTRY/$IMAGE_NAME:$TAG_NAME
